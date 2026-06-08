@@ -77,7 +77,7 @@ section {
   }
 
   .navbar {
-    @apply fixed w-full left-1/2 px-5 py-10 xl:py-5 md:px-10 -translate-x-1/2 z-[100]
+    @apply fixed inset-x-0 top-0 w-full px-5 py-5 xl:py-5 md:px-10 z-[100]
     border-b border-black-200 backdrop-blur-2xl bg-navbar;
 
     .inner {
