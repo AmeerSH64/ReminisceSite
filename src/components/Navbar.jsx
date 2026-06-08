@@ -2,8 +2,8 @@ const Navbar = () => {
   return (
     <header className="navbar">
       <div className="inner gap-10">
-        <a href="#home" className="text-4xl">
-          Reminisce
+        <a href="#home" className="logo hover:scale-110 text-4xl">
+          <img src="/Reminisce-logo.png" alt="Reminisce Logo" />
         </a>
         <nav className="desktop">
           <ul>
@@ -15,6 +15,9 @@ const Navbar = () => {
             </li>
             <li>
               <a href="#testimonials">Testimonials</a>
+            </li>
+            <li>
+              <a href="#team">Team</a>
             </li>
           </ul>
         </nav>

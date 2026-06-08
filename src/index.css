@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
 
 html,
 body {
   width: 100dvw;
   overflow-x: hidden;
-  background-color: black;
-  color: white;
+  font-family: "Merriweather", serif;
+  background-color: white;
+  color: black;
   scroll-behavior: smooth;
 }
 
@@ -14,8 +16,9 @@ section {
 }
 
 @theme {
-  --color-primary: #03c5ab;
-  --color-secondary: #008387;
+  --color-primary: #6B4F3A;
+  --color-secondary: #150C07;
+  --color-navbar: #E4DED2;
   --color-white-50: #d9ecff;
   --color-black-50: #1c1c21;
   --color-black-100: #0e0e10;
@@ -71,5 +74,51 @@ section {
 
   .grid-12-cols {
     @apply grid grid-cols-1 xl:grid-cols-12 gap-10;
+  }
+
+  .navbar {
+    @apply fixed w-full left-1/2 px-5 py-10 xl:py-5 md:px-10 -translate-x-1/2 z-[100]
+    border-b border-black-200 backdrop-blur-2xl bg-navbar;
+
+    .inner {
+      @apply mx-auto flex items-center justify-center;
+    }
+
+    .logo {
+      @apply absolute left-5 top-5 w-10 cursor-pointer
+      transition-all duration-500 ease-in-out;
+    }
+
+    nav.desktop {
+      @apply hidden lg:flex items-center;
+
+      ul {
+        @apply flex space-x-8 gap-5;
+
+        li {
+          @apply text-secondary relative text-2xl transition duration-500;
+
+          span {
+            @apply transition-colors duration-500 hover:text-white;
+          }
+        }
+
+        li:hover {
+          @apply translate-y-1 text-primary;
+        }
+      }
+    }
+
+    .btn-primary {
+      @apply flex absolute top-4 right-3 xl:right-2 bg-primary
+      text-white text-xl font-bold p-2 px-5 rounded-lg
+      justify-center cursor-pointer transition-all duration-500 ease-in-out;
+
+      &:hover {
+        @apply bg-secondary;
+
+        box-shadow: 0 0 15px var(--color-secondary);
+      }
+    }
   }
 }
