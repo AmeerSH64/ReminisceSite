@@ -1,7 +1,9 @@
+import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import About from './sections/About'
 import Home from './sections/Home'
-import Team from './sections/Team'
+import Gallery from './sections/Gallery'
+import Contact from './sections/Contact'
 
 const App = () => {
   return (
@@ -9,7 +11,9 @@ const App = () => {
       <Navbar />
       <Home />
       <About />
-      <Team />
+      <Gallery />
+      <Contact />
+      <Footer />
     </>
   )
 }

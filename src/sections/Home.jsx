@@ -9,7 +9,9 @@ const Home = () => {
           <p className="text-4xl">Your moments. 
             <span className="italic text-primary"> Captured</span>.</p>
         </div>
-        <div></div>
+        <div className="grid grid-cols-3 gap-6 mt-12">
+          <div className=""></div>
+        </div>
       </div>
     </section>
   )
