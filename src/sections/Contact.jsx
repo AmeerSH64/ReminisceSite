@@ -44,18 +44,18 @@ const Contact = () => {
                                     <div className='text-sm text-primary group-hover:text-navbar transition-colors'>
                                         {item.label}
                                     </div>
-                                    <div className='font-medium'>{item.value}</div>
+                                    <div className='font-medium group-hover:text-white transition-colors'>{item.value}</div>
                                 </div>
                             </a>
                         ))}
                         </div>
                     </div>
                     <div className='bg-navbar animate-fade-in aimation-delay-500 flex flex-col'>
-                        <div className='flex itemx-center gap-2 p-10'>
+                        <div className='flex items-center gap-2 p-10'>
                             <span className='w-3 h-3 rounded-full bg-green-400 animate-pulse' />
                             <span className='font-semibold text-2xl'>Currently Available</span>
                         </div>
-                        <p className='text-lg p-4'>
+                        <p className='text-lg pb-4'>
                             We are currently taking on new projects, please contact us for any enquiries.
                         </p>
                     </div>
