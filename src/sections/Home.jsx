@@ -3,13 +3,13 @@ const Home = () => {
     <section id="home" className="home">
       <div className="section-padding text-center">
         <div className="mx-auto max-w-4xl">
-          <h1 className="text-7xl">Welcome to 
+          <h1 className="text-5xl md:text-7xl">Welcome to 
             <span className="font-bold text-primary"> Reminisce</span>
           </h1>
-          <p className="text-4xl">Your moments. 
+          <p className="text-3xl md:text-4xl">Your moments. 
             <span className="italic text-primary"> Captured</span>.</p>
         </div>
-        <div className=" home-collage grid grid-cols-6 gap-4 mt-12">
+        <div className="home-collage grid grid-cols-3 md:grid-cols-6 gap-4 mt-5">
           <div className="col-span-3">
             <img src="/photos/wide-couple.png" alt="Couple Wide Shot" />
           </div>

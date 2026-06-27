@@ -1,6 +1,6 @@
 const Navbar = () => {
   return (
-    <header className="fixed w-full top-0">
+    <header className="fixed w-full top-0 z-10">
       <div className="flex items-center justify-center backdrop-blur-2xl">
         <img src="/R-Text.png" alt="Reminisce Text" className="w-100" />
       </div>
