@@ -29,7 +29,34 @@ const contactInfo = [
     }
 ]
 
+const imageCarousel = [
+    {
+        src: "/photos/chandelier.png"
+    },
+]
+
+const reviews = [
+    {
+        name: "Tifa Lockheart",
+        quote: "Beautifully photographed."
+    },
+    {
+        name: "Cloud Strife",
+        quote: "Very organised and professional."
+    },
+    {
+        name: "Barret Wallace",
+        quote: "Captured our wedding perfectly."
+    },
+    {
+        name: "Aerith Gainsborough",
+        quote: "They have an eye for the best shots."
+    }
+]
+
 export { 
     teamMembers,
     contactInfo,
+    imageCarousel,
+    reviews,
 };

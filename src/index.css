@@ -134,7 +134,7 @@ section {
 
   .about {
     .about-text {
-      @apply w-200 flex flex-col text-xl md:text-5xl text-start gap-17;
+      @apply w-100 md:w-200 flex flex-col text-xl md:text-5xl text-start gap-17;
 
     }
     button {
@@ -147,7 +147,7 @@ section {
     }
 
     img {
-      @apply w-100;
+      @apply w-50 md:w-100;
     }
 
     .about-top-images {
