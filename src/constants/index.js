@@ -1,11 +1,10 @@
 import { IconMail, IconMapPin, IconPhone } from "@tabler/icons-react";
 
-const teamMembers = [
-    { 
-        name: "Aneeq Hussain", 
-        role: "Founder & CEO", 
-        image: "/team/Aneeq-profile.PNG"
-    }
+const words = [
+    { text: "Captured." }, 
+    { text: "Filmed." }, 
+    { text: "Redefined." },
+    { text: "Enhanced" }
 ]
 
 const contactInfo = [
@@ -55,7 +54,7 @@ const reviews = [
 ]
 
 export { 
-    teamMembers,
+    words,
     contactInfo,
     imageCarousel,
     reviews,

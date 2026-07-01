@@ -76,6 +76,26 @@ section {
     @apply grid grid-cols-1 xl:grid-cols-12 gap-10;
   }
 
+  .cta-button {
+    @apply px-4 py-4 rounded-lg bg-secondary/20 flex justify-center items-center relative cursor-pointer overflow-hidden;
+
+    .bg-circle {
+      @apply absolute -right-5 origin-center top-1/2 -translate-y-1/2 translate-x-5
+        w-[130%] h-[130%] group-hover:size-10 group-hover:right-10
+        rounded-full bg-secondary transition-all duration-500;
+    }
+
+    .text {
+      @apply uppercase md:text-lg text-white transition-all duration-500
+        group-hover:text-black-200 group-hover:-translate-x-12 xl:translate-x-0 -translate-x-5;
+    }
+
+    .arrow-wrapper {
+      @apply group-hover:bg-secondary size-10 rounded-full absolute right-10 top-1/2 
+        -translate-y-1/2 translate-x-5 flex justify-center items-center overflow-hidden;
+    }
+  }
+
   .navbar {
     @apply inset-x-0 top-0 w-full h-18 px-5 py-5 xl:py-5 md:px-10 z-[100]
     border-b border-black-200 backdrop-blur-2xl bg-navbar;
@@ -125,10 +145,10 @@ section {
   .home {
     @apply mt-35 md:mt-0;
 
-    img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
+    .home-text {
+      .slide {
+        @apply absolute pt-0 px-2 md:px-5 py-[30px] h-[48px] md:h-[40px] translate-y-0 overflow-hidden;
+      }
     }
   }
 
@@ -136,14 +156,6 @@ section {
     .about-text {
       @apply w-100 md:w-200 flex flex-col text-xl md:text-5xl text-start gap-17;
 
-    }
-    button {
-      @apply bg-secondary text-white py-3 px-10 flex absolute text-xl
-              cursor-pointer flex-row gap-3 transition-shadow rounded-xl;
-      
-      &:hover {
-        box-shadow: 0 0 15px var(--color-secondary);
-      }
     }
 
     img {
@@ -159,8 +171,16 @@ section {
     }
   }
 
+  .gallery {
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
   .contact {
-    @apply flex flex-col items-center justify-center p-6;
+    @apply flex flex-row justify-center items-center p-6;
 
     form {
       @apply w-full;
@@ -177,15 +197,6 @@ section {
     textarea {
       @apply resize-none;
     }
-
-    button {
-      @apply bg-secondary text-white text-2xl font-bold p-3 rounded-xl
-      w-80 justify-center cursor-pointer transition-shadow duration-300 ease-in-out;
-
-      &:hover {
-        box-shadow: 0 0 15px var(--color-secondary);
-      }
-    }
   }
 
   footer {
@@ -194,6 +205,33 @@ section {
     .logo {
       @apply w-10 h-10 pt-1 cursor-pointer transition-all duration-300 ease-in-out;
     }
+  }
+}
+
+.slide {
+  display: inline-block;
+  flex-direction: column;
+  transition: all cubic-bezier(0.71, 0.03, 0.34, 1);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  animation: wordSlider 21s infinite cubic-bezier(0.9, 0.01, 0.3, 0.99);
+}
+
+@keyframes wordSlider {
+  0% {
+    transform: translateY(0.5%);
+  }
+  25% {
+    transform: translateY(-25%);
+  }
+  50% {
+    transform: translateY(-50%);
+  }
+  75% {
+    transform: translateY(-75%);
   }
 }
 
