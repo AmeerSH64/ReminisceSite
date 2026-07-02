@@ -27,7 +27,7 @@ const Home = () => {
           <h1 className="text-5xl md:text-7xl">Welcome to 
             <span className="font-bold text-primary"> Reminisce</span>
           </h1>
-          <p className="text-3xl md:text-4xl">Your moments.
+          <p className="flex flex-wrap items-center justify-center gap-2 text-2xl md:text-4xl">Your moments.
             <span className="slide">
               <span className="wrapper">
                 {words.map((word) => (

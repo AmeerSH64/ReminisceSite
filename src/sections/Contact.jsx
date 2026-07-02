@@ -6,12 +6,12 @@ const Contact = () => {
   return (
     <section id="contact" className='contact'>
         <div className="section-padding text-center">
-            <h2 className="md:text-7xl text-4xl">Get in touch</h2>
-            <p className="md:text-4xl mb-8">Have an idea? Let's
+            <h2 className="md:text-7xl text-5xl">Get in touch</h2>
+            <p className="text-2xl md:text-4xl mb-8">Have an idea? Let's
                 <span className="italic text-primary"> discuss.</span>
             </p>
-            <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                <div className=" flex items-center bg-navbar p-8 animate-fade-in animation-delay-300">
+            <div className="grid lg:grid-cols-3 gap-6 md:gap-12 max-w-7xl mx-auto align-middle">
+                <div className="bg-navbar p-8 animate-fade-in animation-delay-300">
                     <form className="space-y-6">
                         <div>
                             <input type="text" placeholder="Name" className="input-field" />
@@ -65,11 +65,11 @@ const Contact = () => {
                         </div>
                     </div>
                 </div>
+                <div className="contact-video">
+                    <video src="/videos/mehndi-vertical.mov" autoPlay loop
+                    muted playsInline />
+                </div>
             </div>
-        </div>
-        <div className="contact-video">
-            <video src="/videos/mehndi-vertical.mov" autoPlay loop
-             muted playsInline className="w-[50%]" />
         </div>
     </section>
   )

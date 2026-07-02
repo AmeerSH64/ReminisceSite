@@ -55,12 +55,12 @@ const About = () => {
               </a>
             </div>
           </div>
-          <div className="flex items-center flex-col gap-10 animate-fade-in">
-            <div className="about-top-images flex flex-row gap-10" ref={image1Ref}>
+          <div className="flex items-center justify-center flex-col animate-fade-in">
+            <div className="about-top-images flex flex-row gap-5" ref={image1Ref}>
               <img src="/photos/deco-outside.jpg" alt="Outside Decoration" className="animation-delay-300" />
               <img src="/photos/grey-bride-swing.jpg" alt="Bride on Swing" className="animation-delay-400" />
             </div>
-            <div className="about-bottom-images flex flex-row gap-10" ref={image2Ref}>
+            <div className="about-bottom-images flex flex-row gap-5" ref={image2Ref}>
               <img src="/photos/car-interior.jpg" alt="Car Interior" className="animation-delay-500" />
               <img src="/photos/bride-window.jpg" alt="Bride at Window" className="animation-delay-600" />
             </div>

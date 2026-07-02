@@ -37,19 +37,23 @@ const imageCarousel = [
 const reviews = [
     {
         name: "Tifa Lockheart",
-        quote: "Beautifully photographed."
+        quote: "Beautifully photographed.",
+        image: "/photos/chandelier.png"
     },
     {
         name: "Cloud Strife",
-        quote: "Very organised and professional."
+        quote: "Very organised and professional.",
+        image: "/photos/wall-art.png"
     },
     {
         name: "Barret Wallace",
-        quote: "Captured our wedding perfectly."
+        quote: "Captured our wedding perfectly.",
+        image: "/photos/couple-back.png"
     },
     {
         name: "Aerith Gainsborough",
-        quote: "They have an eye for the best shots."
+        quote: "They have an eye for the best shots.",
+        image: "/photos/shelf.png"
     }
 ]
 

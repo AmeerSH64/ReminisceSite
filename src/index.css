@@ -87,12 +87,13 @@ section {
 
     .text {
       @apply uppercase md:text-lg text-white transition-all duration-500
-        group-hover:text-black-200 group-hover:-translate-x-12 xl:translate-x-0 -translate-x-5;
+        group-hover:text-black-200 group-hover:-translate-x-12 xl:translate-x-0;
     }
 
     .arrow-wrapper {
       @apply group-hover:bg-secondary size-10 rounded-full absolute right-10 top-1/2 
-        -translate-y-1/2 translate-x-5 flex justify-center items-center overflow-hidden;
+        translate-y-6 group-hover:-translate-y-5
+        lg:-translate-y-1/2 translate-x-5 flex justify-center items-center overflow-hidden;
     }
   }
 
@@ -143,18 +144,24 @@ section {
   }
 
   .home {
-    @apply mt-35 md:mt-0;
+    @apply mt-35 md:mt-0 ml-0 mr-0;
 
     .home-text {
+      @apply text-center;
+
+      p {
+        @apply flex flex-wrap items-center justify-center gap-2;
+      }
+
       .slide {
-        @apply absolute pt-0 px-2 md:px-5 py-[30px] h-[48px] md:h-[40px] translate-y-0 overflow-hidden;
+        @apply relative inline-flex items-center overflow-hidden px-2 md:px-5 h-[44px] md:h-[40px] leading-none;
       }
     }
   }
 
   .about {
     .about-text {
-      @apply w-100 md:w-200 flex flex-col text-xl md:text-5xl text-start gap-17;
+      @apply w-100 md:w-200 flex flex-col text-2xl md:text-5xl text-start gap-17;
 
     }
 
@@ -163,11 +170,11 @@ section {
     }
 
     .about-top-images {
-      @apply -translate-x-20;
+      @apply lg:-translate-x-20;
     }
 
     .about-bottom-images {
-      @apply -translate-y-30;
+      @apply lg:-translate-y-30;
     }
   }
 
