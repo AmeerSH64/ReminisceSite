@@ -1,10 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react';
+import { useGSAP } from "@gsap/react";
+import gsap from 'gsap';
 import { imageCarousel, reviews } from '../constants'
 import TestimonialCard from '../components/TestimonialCard';
 import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const sectionRef = React.useRef(null);
+  const titleRef = React.useRef(null);
+  const carouselRef = useRef(null);
 
   const next = () => {
     setActiveIndex((prevIndex) => (prevIndex === reviews.length - 1 ? 0 : prevIndex + 1));
@@ -14,15 +21,36 @@ const Testimonials = () => {
     setActiveIndex((prevIndex) => (prevIndex === 0 ? reviews.length - 1 : prevIndex - 1));
   };
 
+  setTimeout(() => {
+    if (activeIndex < reviews.length - 1) {
+      setActiveIndex(activeIndex + 1);
+    } else {
+      setActiveIndex(0);
+    }
+  }, 3000);
+
+  useGSAP(() => {
+    const parts = [sectionRef.current, titleRef.current, carouselRef.current];
+    parts.forEach((part, index) => {
+      gsap.fromTo(part, 
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, delay: 0.3 * (index + 1),
+          scrollTrigger: { trigger: part, start: "top 50%" }
+        }
+      )
+    })
+    gsap.fromTo(sectionRef.current, { opacity: 0 }, { opacity: 1, duration: 1.5 })
+  }, []);
+
   return (
-    <section id='testimonials' className='testimonials'>
+    <section id='testimonials' className='testimonials' ref={sectionRef}>
       <div className='section-padding mx-auto text-center'>
-        <h2 className='text-5xl md:text-7xl'>Testimonials</h2>
-        <p className='text-2xl md:text-4xl mb-8'>Hear the words of our
+        <h2 className='text-5xl md:text-7xl' ref={titleRef}>Testimonials</h2>
+        <p className='text-2xl md:text-4xl mb-8' ref={titleRef}>Hear the words of our
           <span className='italic text-primary'> customers.</span>
         </p>
         {/* Desktop View */}
-        <div
+        <div ref={carouselRef}
           className='hidden lg:flex items-center justify-center flex-col min-h-[320px] md:min-h-[420px] bg-cover bg-center'
           style={{
             backgroundImage: `url(${reviews[activeIndex].image})`,
@@ -52,7 +80,7 @@ const Testimonials = () => {
           </div>
         </div>
         {/* Mobile View */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto" ref={carouselRef}>
           <div className="relative block lg:hidden">
             <div className="animate-fade-in animation-delay-300">
               <TestimonialCard name={reviews[activeIndex].name}

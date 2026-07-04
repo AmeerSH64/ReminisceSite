@@ -30,7 +30,7 @@ const contactInfo = [
 
 const imageCarousel = [
     {
-        src: "/photos/chandelier.png"
+        src: "/photos/chandelier.webp"
     },
 ]
 
@@ -38,22 +38,22 @@ const reviews = [
     {
         name: "Tifa Lockheart",
         quote: "Beautifully photographed.",
-        image: "/photos/chandelier.png"
+        image: "/photos/chandelier.webp"
     },
     {
         name: "Cloud Strife",
         quote: "Very organised and professional.",
-        image: "/photos/wall-art.png"
+        image: "/photos/wall-art.webp"
     },
     {
         name: "Barret Wallace",
         quote: "Captured our wedding perfectly.",
-        image: "/photos/couple-back.png"
+        image: "/photos/couple-back.webp"
     },
     {
         name: "Aerith Gainsborough",
         quote: "They have an eye for the best shots.",
-        image: "/photos/shelf.png"
+        image: "/photos/shelf.webp"
     }
 ]
 

@@ -1,16 +1,35 @@
 import { IconSend } from '@tabler/icons-react'
-import React from 'react'
-import { contactInfo } from '../constants'
+import { useRef } from 'react'
+import { contactInfo } from '../constants';
+import { useGSAP } from "@gsap/react";
+import gsap from 'gsap';
 
 const Contact = () => {
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const formRef = useRef(null);
+
+    useGSAP(() => {
+        const parts = [sectionRef.current, titleRef.current, formRef.current];
+        parts.forEach((part, index) => {
+          gsap.fromTo(part, 
+            { y: 50, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1, delay: 0.3 * (index + 1),
+              scrollTrigger: { trigger: part, start: "top 50%" }
+            }
+          )
+        })
+        gsap.fromTo(sectionRef.current, { opacity: 0 }, { opacity: 1, duration: 1.5 })
+    }, []);
   return (
-    <section id="contact" className='contact'>
+    <section id="contact" className='contact' ref={sectionRef}>
         <div className="section-padding text-center">
-            <h2 className="md:text-7xl text-5xl">Get in touch</h2>
-            <p className="text-2xl md:text-4xl mb-8">Have an idea? Let's
+            <h2 className="md:text-7xl text-5xl" ref={titleRef}>Get in touch</h2>
+            <p className="text-2xl md:text-4xl mb-8" ref={titleRef}>Have an idea? Let's
                 <span className="italic text-primary"> discuss.</span>
             </p>
-            <div className="grid lg:grid-cols-3 gap-6 md:gap-12 max-w-7xl mx-auto align-middle">
+            <div className="grid lg:grid-cols-3 gap-6 md:gap-12 max-w-7xl mx-auto align-middle"
+            ref={formRef}>
                 <div className="bg-navbar p-8 animate-fade-in animation-delay-300">
                     <form className="space-y-6">
                         <div>
@@ -65,7 +84,7 @@ const Contact = () => {
                         </div>
                     </div>
                 </div>
-                <div className="contact-video">
+                <div className="contact-video lg:w-[66%]">
                     <video src="/videos/mehndi-vertical.mov" autoPlay loop
                     muted playsInline />
                 </div>
@@ -74,5 +93,5 @@ const Contact = () => {
     </section>
   )
 }
-
+   
 export default Contact
