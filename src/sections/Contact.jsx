@@ -8,9 +8,12 @@ const Contact = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const formRef = useRef(null);
+  const infoRef = useRef(null);
+  const videoRef = useRef(null);
 
     useGSAP(() => {
-        const parts = [sectionRef.current, titleRef.current, formRef.current];
+        const parts = [sectionRef.current, titleRef.current, formRef.current, 
+            infoRef.current, videoRef.current];
         parts.forEach((part, index) => {
           gsap.fromTo(part, 
             { y: 50, opacity: 0 },
@@ -28,10 +31,9 @@ const Contact = () => {
             <p className="text-2xl md:text-4xl mb-8" ref={titleRef}>Have an idea? Let's
                 <span className="italic text-primary"> discuss.</span>
             </p>
-            <div className="grid lg:grid-cols-3 gap-6 md:gap-12 max-w-7xl mx-auto align-middle"
-            ref={formRef}>
-                <div className="bg-navbar p-8 animate-fade-in animation-delay-300">
-                    <form className="space-y-6">
+            <div className="grid lg:grid-cols-3 gap-6 md:gap-12 max-w-7xl mx-auto align-middle">
+                <div className="bg-navbar p-8">
+                    <form className="space-y-6" ref={formRef}>
                         <div>
                             <input type="text" placeholder="Name" className="input-field" />
                         </div>
@@ -57,7 +59,7 @@ const Contact = () => {
                     </form>
                 </div>
 
-                <div className='space-y-6 animate-fade-in animation-delay-400'>
+                <div className='space-y-6' ref={infoRef}>
                     <div className='bg-navbar p-8'>
                         <h3 className='text-primary text-xl bold'>Contact Information</h3>
                         <div>
@@ -77,14 +79,14 @@ const Contact = () => {
                         ))}
                         </div>
                     </div>
-                    <div className='bg-navbar animate-fade-in aimation-delay-500 flex flex-col'>
+                    <div className='bg-navbar flex flex-col'>
                         <div className='flex items-center gap-5 p-10'>
                             <span className='w-3 h-3 rounded-full bg-green-400 animate-pulse' />
                             <span className='font-semibold text-2xl'>Currently Available</span>
                         </div>
                     </div>
                 </div>
-                <div className="contact-video lg:w-[66%]">
+                <div className="contact-video lg:w-[66%]" ref={videoRef}>
                     <video src="/videos/mehndi-vertical.mov" autoPlay loop
                     muted playsInline />
                 </div>

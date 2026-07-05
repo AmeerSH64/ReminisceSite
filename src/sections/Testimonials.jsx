@@ -4,14 +4,22 @@ import gsap from 'gsap';
 import { imageCarousel, reviews } from '../constants'
 import TestimonialCard from '../components/TestimonialCard';
 import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
+import AwesomeSlider from 'react-awesome-slider';
+import withAutoplay from 'react-awesome-slider/dist/autoplay';
+import 'react-awesome-slider/dist/styles.css';
+
+const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
 
+  const sliderRef = useRef(null);
   const sectionRef = React.useRef(null);
   const titleRef = React.useRef(null);
   const carouselRef = useRef(null);
+  const reviewRef = useRef(null);
 
   const next = () => {
     setActiveIndex((prevIndex) => (prevIndex === reviews.length - 1 ? 0 : prevIndex + 1));
@@ -19,6 +27,22 @@ const Testimonials = () => {
 
   const previous = () => {
     setActiveIndex((prevIndex) => (prevIndex === 0 ? reviews.length - 1 : prevIndex - 1));
+  };
+
+  const handleNext = () => {
+    sliderRef.current?.next();
+  };
+
+  const handlePrev = () => {
+    sliderRef.current?.prev();
+  };
+
+  const handleGoToSlide = (index) => {
+    sliderRef.current?.goto(index);
+  };
+
+  const handleTransitionStart = (entry) => {
+    setCurrentSlide(entry.index);
   };
 
   setTimeout(() => {
@@ -30,7 +54,7 @@ const Testimonials = () => {
   }, 3000);
 
   useGSAP(() => {
-    const parts = [sectionRef.current, titleRef.current, carouselRef.current];
+    const parts = [sectionRef.current, titleRef.current, carouselRef.current, reviewRef.current];
     parts.forEach((part, index) => {
       gsap.fromTo(part, 
         { y: 50, opacity: 0 },
@@ -50,35 +74,29 @@ const Testimonials = () => {
           <span className='italic text-primary'> customers.</span>
         </p>
         {/* Desktop View */}
-        <div ref={carouselRef}
+        <AutoplaySlider ref={sliderRef} play={isPlaying} cancelOnInteraction={false} interval={3000}
+        animation="foldOutAnimation" onTransitionStart={handleTransitionStart} bullets={false}
+        organicArrows={true}>
+          <div ref={carouselRef}
           className='hidden lg:flex items-center justify-center flex-col min-h-[320px] md:min-h-[420px] bg-cover bg-center'
           style={{
             backgroundImage: `url(${reviews[activeIndex].image})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-          }}
-        >
-          <div className='flex justify-center items-center flex-col'>
-            <div className='relative grid grid-cols-2 h-[70vh] gap-x-150 gap-y-90 z-9'>
-            {reviews.map((review, index) => (
-              <div className='w-80 md:w-130 text-white pt-20'>
-                <h5 className='text-3xl md:text-5xl'>"{review.quote}"</h5>
-                <p className='text-xl md:text-2xl'>{review.name}</p>
+          }}>
+            <div className='flex justify-center items-center flex-col'>
+              <div className='relative grid grid-cols-2 h-[70vh] gap-x-150 gap-y-90 z-9'>
+                {reviews.map((review, index) => (
+                  <div className="w-80 md:w-130 text-white pt-20" ref={reviewRef} key={index}>
+                    <h5 className="text-3xl md:text-5xl">"{review.quote}"</h5>
+                    <p className="text-xl md:text-2xl">{review.name}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-            </div>
-            <div className='flex flex-row justify-center items-center bg-secondary 
-            rounded-4xl z-9 w-35 h-8 gap-3 -translate-y-5'>
-              {reviews.map((_, index) => (
-                <button key={index} onClick={() => setActiveIndex(index)}
-                className={`w-4 h-4 rounded-full transition-all duration-300
-                  ${index === activeIndex ? "w-8 bg-primary" : 
-                    "bg-navbar hover:bg-primary/50"}`} />
-              ))}
             </div>
           </div>
-        </div>
+        </AutoplaySlider>
         {/* Mobile View */}
         <div className="max-w-4xl mx-auto" ref={carouselRef}>
           <div className="relative block lg:hidden">

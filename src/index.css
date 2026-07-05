@@ -154,7 +154,7 @@ section {
       }
 
       .slide {
-        @apply relative inline-flex items-center overflow-hidden px-2 md:px-5 h-[44px] md:h-[40px] leading-none;
+        @apply relative inline-flex items-center overflow-hidden px-2 md:px-4 h-[44px] md:h-[40px] leading-none;
       }
     }
   }

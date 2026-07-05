@@ -4,7 +4,7 @@ const words = [
     { text: "Captured." }, 
     { text: "Filmed." }, 
     { text: "Redefined." },
-    { text: "Enhanced" }
+    { text: "Enhanced." }
 ]
 
 const contactInfo = [
