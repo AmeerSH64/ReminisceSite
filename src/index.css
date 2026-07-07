@@ -86,7 +86,7 @@ section {
     }
 
     .text {
-      @apply uppercase md:text-lg text-white transition-all duration-500
+      @apply uppercase md:text-lg text-white transition-all duration-500 z-3
         group-hover:text-black-200 group-hover:-translate-x-12 xl:translate-x-0;
     }
 

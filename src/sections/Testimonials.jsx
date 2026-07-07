@@ -3,7 +3,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from 'gsap';
 import { imageCarousel, reviews } from '../constants'
 import TestimonialCard from '../components/TestimonialCard';
-import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
+import { IconArrowLeft, IconArrowRight, IconPlayerPauseFilled, IconPlayerPlayFilled } from '@tabler/icons-react';
 import AwesomeSlider from 'react-awesome-slider';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';
 import 'react-awesome-slider/dist/styles.css';
@@ -13,11 +13,11 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   const sliderRef = useRef(null);
-  const sectionRef = React.useRef(null);
-  const titleRef = React.useRef(null);
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
   const carouselRef = useRef(null);
   const reviewRef = useRef(null);
 
@@ -42,16 +42,12 @@ const Testimonials = () => {
   };
 
   const handleTransitionStart = (entry) => {
-    setCurrentSlide(entry.index);
-  };
-
-  setTimeout(() => {
-    if (activeIndex < reviews.length - 1) {
-      setActiveIndex(activeIndex + 1);
-    } else {
-      setActiveIndex(0);
+    const idx = entry && typeof entry.index === 'number' ? entry.index : null;
+    if (idx !== null && idx >= 0 && idx < reviews.length) {
+      setCurrentSlide(idx);
+      setActiveIndex(idx);
     }
-  }, 3000);
+  };
 
   useGSAP(() => {
     const parts = [sectionRef.current, titleRef.current, carouselRef.current, reviewRef.current];
@@ -74,29 +70,46 @@ const Testimonials = () => {
           <span className='italic text-primary'> customers.</span>
         </p>
         {/* Desktop View */}
-        <AutoplaySlider ref={sliderRef} play={isPlaying} cancelOnInteraction={false} interval={3000}
-        animation="foldOutAnimation" onTransitionStart={handleTransitionStart} bullets={false}
-        organicArrows={true}>
-          <div ref={carouselRef}
-          className='hidden lg:flex items-center justify-center flex-col min-h-[320px] md:min-h-[420px] bg-cover bg-center'
-          style={{
-            backgroundImage: `url(${reviews[activeIndex].image})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-          }}>
-            <div className='flex justify-center items-center flex-col'>
-              <div className='relative grid grid-cols-2 h-[70vh] gap-x-150 gap-y-90 z-9'>
-                {reviews.map((review, index) => (
-                  <div className="w-80 md:w-130 text-white pt-20" ref={reviewRef} key={index}>
-                    <h5 className="text-3xl md:text-5xl">"{review.quote}"</h5>
-                    <p className="text-xl md:text-2xl">{review.name}</p>
-                  </div>
-                ))}
-              </div>
+        <div ref={carouselRef} className='relative overflow-hidden'>
+          <AutoplaySlider ref={sliderRef} className='relative z-0' play={isPlaying} cancelOnInteraction={false} interval={3000}
+            animation="foldOutAnimation" onTransitionStart={handleTransitionStart} bullets={false}
+            organicArrows={false}>
+            {reviews.map((review, index) => (
+              <div key={index}
+                className='hidden lg:flex items-center justify-center z-0
+                flex-col min-h-[320px] md:min-h-[420px] bg-cover bg-center
+                md:max-h-[90vh]'
+                style={{
+                  backgroundImage: `url(${review.image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }} />
+            ))}
+          </AutoplaySlider>
+          <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 flex justify-center items-center flex-col z-20'>
+            <div className='relative grid grid-cols-2 h-[70vh] bottom-50 gap-x-150 gap-y-90 z-9'>
+              {reviews.map((r, idx) => (
+                <div className="w-80 md:w-130 text-white pt-20" key={idx}>
+                  <h5 className="text-3xl md:text-5xl">"{r.quote}"</h5>
+                  <p className="text-xl md:text-2xl">{r.name}</p>
+                </div>
+              ))}
+            </div>
+            <div className="bg-secondary w-30 rounded-4xl h-6 flex absolute bottom-5
+            items-center justify-center gap-4 mt-4 text-navbar">
+              <button onClick={handlePrev}>
+                <IconArrowLeft className="cursor-pointer" />
+              </button>
+              <button onClick={() => setIsPlaying(!isPlaying)} className="cursor-pointer">
+                {isPlaying ? <IconPlayerPauseFilled /> : <IconPlayerPlayFilled />}
+              </button>
+              <button onClick={handleNext}>
+                <IconArrowRight className="cursor-pointer" />
+              </button>
             </div>
           </div>
-        </AutoplaySlider>
+        </div>
         {/* Mobile View */}
         <div className="max-w-4xl mx-auto" ref={carouselRef}>
           <div className="relative block lg:hidden">

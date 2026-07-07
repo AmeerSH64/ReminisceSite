@@ -32,8 +32,8 @@ const Contact = () => {
                 <span className="italic text-primary"> discuss.</span>
             </p>
             <div className="grid lg:grid-cols-3 gap-6 md:gap-12 max-w-7xl mx-auto align-middle">
-                <div className="bg-navbar p-8">
-                    <form className="space-y-6" ref={formRef}>
+                <div className="bg-navbar p-8" ref={formRef}>
+                    <form className="space-y-6">
                         <div>
                             <input type="text" placeholder="Name" className="input-field" />
                         </div>
