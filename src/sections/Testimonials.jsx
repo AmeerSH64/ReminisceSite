@@ -70,25 +70,21 @@ const Testimonials = () => {
           <span className='italic text-primary'> customers.</span>
         </p>
         {/* Desktop View */}
-        <div ref={carouselRef} className='relative overflow-hidden'>
-          <AutoplaySlider ref={sliderRef} className='relative z-0' play={isPlaying} cancelOnInteraction={false} interval={3000}
+        <div ref={carouselRef} className='desktop relative overflow-hidden'>
+          <AutoplaySlider ref={sliderRef} className='relative h-[80vh] z-0' play={isPlaying} cancelOnInteraction={false} interval={3000}
             animation="foldOutAnimation" onTransitionStart={handleTransitionStart} bullets={false}
             organicArrows={false}>
             {reviews.map((review, index) => (
               <div key={index}
                 className='hidden lg:flex items-center justify-center z-0
-                flex-col min-h-[320px] md:min-h-[420px] bg-cover bg-center
-                md:max-h-[90vh]'
-                style={{
-                  backgroundImage: `url(${review.image})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                }} />
+                flex-col'>
+                  <img src={review.image} className='w-full h-full object-cover' />
+              </div>
+
             ))}
           </AutoplaySlider>
           <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 flex justify-center items-center flex-col z-20'>
-            <div className='relative grid grid-cols-2 h-[70vh] bottom-50 gap-x-150 gap-y-90 z-9'>
+            <div className='relative grid grid-cols-2 h-[70vh] bottom-30 gap-x-150 gap-y-90 z-9'>
               {reviews.map((r, idx) => (
                 <div className="w-80 md:w-130 text-white pt-20" key={idx}>
                   <h5 className="text-3xl md:text-5xl">"{r.quote}"</h5>
@@ -96,16 +92,17 @@ const Testimonials = () => {
                 </div>
               ))}
             </div>
-            <div className="bg-secondary w-30 rounded-4xl h-6 flex absolute bottom-5
+            <div className="bg-secondary w-55 rounded-4xl h-18 flex absolute bottom-5
             items-center justify-center gap-4 mt-4 text-navbar">
               <button onClick={handlePrev}>
-                <IconArrowLeft className="cursor-pointer" />
+                <IconArrowLeft className="cursor-pointer w-15 h-15" />
               </button>
-              <button onClick={() => setIsPlaying(!isPlaying)} className="cursor-pointer">
-                {isPlaying ? <IconPlayerPauseFilled /> : <IconPlayerPlayFilled />}
+              <button onClick={() => setIsPlaying(!isPlaying)}>
+                {isPlaying ? <IconPlayerPauseFilled className="cursor-pointer w-15 h-15" /> :
+                 <IconPlayerPlayFilled className="cursor-pointer w-15 h-15" />}
               </button>
               <button onClick={handleNext}>
-                <IconArrowRight className="cursor-pointer" />
+                <IconArrowRight className="cursor-pointer w-15 h-15" />
               </button>
             </div>
           </div>
