@@ -35,7 +35,11 @@ const About = () => {
         <p className="text-3xl md:text-4xl mb-8" ref={titleRef}>What we do for 
           <span className="italic text-primary"> you.</span>
         </p>
-        <div className="flex justify-center items-center flex-col xl:flex-row gap-47">
+        <div className="flex justify-center items-center flex-col xl:flex-row gap-20">
+          <div className="about-top-images flex flex-row md:flex-col md:gap-5" ref={image1Ref}>
+            <img src="/photos/deco-outside.webp" alt="Outside Decoration" className="lg:-translate-x-50" />
+            <img src="/photos/grey-bride-swing.webp" alt="Bride on Swing" className="lg:-translate-y-50" />
+          </div>
           <div className="flex items-center flex-col gap-10" ref={descriptionRef}>
             <div className="about-text">
               <p>At Reminisce, we specialise in wedding photography and cinematography.</p>
@@ -47,23 +51,15 @@ const About = () => {
                   <div className="bg-circle" />
                   <p className="text">See our work</p>
                   <div className="arrow-wrapper">
-                    <IconArrowDown className="size-5 xl:-translate-y-32 
-                    translate-y-0 animate-bounce group-hover:translate-y-0 
-                    transition-all duration-500 text-white" />
+                    <IconArrowDown className="h-5 w-5 xl:-translate-y-32 translate-y-0 animate-bounce group-hover:translate-y-0 transition-all duration-500 text-white" />
                   </div>
                 </div>
               </a>
             </div>
           </div>
-          <div className="flex items-center justify-center flex-col">
-            <div className="about-top-images flex flex-row gap-5" ref={image1Ref}>
-              <img src="/photos/deco-outside.webp" alt="Outside Decoration" />
-              <img src="/photos/grey-bride-swing.webp" alt="Bride on Swing" />
-            </div>
-            <div className="about-bottom-images flex flex-row gap-5" ref={image2Ref}>
-              <img src="/photos/car-interior.webp" alt="Car Interior" />
-              <img src="/photos/bride-window.webp" alt="Bride at Window" />
-            </div>
+          <div className="about-bottom-images flex flex-row md:flex-col md:gap-5" ref={image2Ref}>
+            <img src="/photos/car-interior.webp" alt="Car Interior" className="lg:translate-x-50" />
+            <img src="/photos/bride-window.webp" alt="Bride at Window" className="lg:-translate-y-50" />
           </div>
         </div>
       </div>
