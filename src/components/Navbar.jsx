@@ -1,34 +1,65 @@
+import { IconMenu2 } from "@tabler/icons-react";
+import { words } from "../constants";
+import { useGSAP } from "@gsap/react";
+import gsap from 'gsap';
+
 const Navbar = () => {
+    useGSAP(() => {
+        gsap.fromTo('header',
+            { opacity: 0 },
+            { opacity: 1, stagger: 0.5, duration: 1, ease: 'power1.inOut'}
+        )
+        gsap.fromTo('.home-text h1',
+            { y: 50, opacity: 0 },
+            { y: 0, opacity: 1, stagger: 0.5, delay: 0.5, duration: 1, ease: 'power2.inOut'}
+        )
+
+        gsap.fromTo('.home-text p',
+            { y: 50, opacity: 0 },
+            { y: 0, opacity: 1, stagger: 0.2, delay: 1.0, duration: 1, ease: 'power2.inOut'}
+        )
+    });
+
   return (
-    <header className="fixed w-full top-0 z-10">
-      <div className="flex items-center justify-center backdrop-blur-2xl">
-        <img src="/R-Text.png" alt="Reminisce Text" className="w-100" />
-      </div>
-      <div className="navbar">
-        <div className="inner gap-10">
-          <a href="#home" className="logo hover:scale-110 text-4xl">
-            <img src="/Reminisce-logo.png" alt="Reminisce Logo" />
-          </a>
-          <nav className="desktop">
-            <ul>
-              <li>
-                <a href="#about">About</a>
-              </li>
-              <li>
-                <a href="#services">Services</a>
-              </li>
-              <li>
-                <a href="#testimonials">Testimonials</a>
-              </li>
-              <li>
-                <a href="#gallery">Gallery</a>
-              </li>
+    <header className="w-full top-0 z-10">
+      <nav className="navbar">
+            <div className="nav-header md:hidden">
+                <div className="nav-logo">
+                    <a href="#">
+                        <img src="/Reminisce-logo.png" alt="Reminisce Logo" className="logo" />
+                    </a>
+                </div>
+                <div className="nav-menu-btn" id="menu-btn">
+                    <IconMenu2 />
+                </div>
+            </div>
+            <ul className="nav-links" id="nav-links">
+                <li><a href="#about">ABOUT US</a></li>
+                <li><a href="#gallery">GALLERY</a></li>
+                <li>
+                    <a href="#home">
+                        <img src="/logo-white.png" alt="White Logo" className="logo hidden md:block max-w-[150px]" />
+                    </a>
+                </li>
+                <li><a href="#testimonials">TESTIMONIALS</a></li>
+                <li><a href="#contact">CONTACT US</a></li>
             </ul>
-          </nav>
-          <a href="#contact">
-            <button className="btn-primary">Contact Us</button>
-          </a>
-        </div>
+      </nav>
+      <div className="home-text mt-30 mx-auto max-w-4xl">
+        <h1 className="text-5xl md:text-7xl text-white">Welcome to 
+            <span className="font-bold text-primary"> Reminisce</span>
+        </h1>
+        <p className="flex flex-wrap items-center justify-center gap-2 text-white text-2xl md:text-4xl">Your moments.
+            <span className="slide">
+              <span className="wrapper">
+                {words.map((word) => (
+                  <span key={word.text} className="flex items-center md:gap-3 gap-1 pb-2">
+                    <span className="italic text-primary">{word.text}</span>
+                  </span>
+                ))}
+              </span>
+            </span>
+        </p>
       </div>
     </header>
   )

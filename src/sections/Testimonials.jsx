@@ -21,6 +21,8 @@ const Testimonials = () => {
   const carouselRef = useRef(null);
   const reviewRef = useRef(null);
 
+  const visibleReviews = reviews.slice(activeIndex).concat(reviews.slice(0, activeIndex));
+
   const next = () => {
     setActiveIndex((prevIndex) => (prevIndex === reviews.length - 1 ? 0 : prevIndex + 1));
   };
@@ -49,6 +51,14 @@ const Testimonials = () => {
     }
   };
 
+  setTimeout(() => {
+    if (activeIndex < reviews.length - 1) {
+      setActiveIndex(activeIndex + 1);
+    } else {
+      setActiveIndex(0);
+    }
+  }, 3000);
+
   useGSAP(() => {
     const parts = [sectionRef.current, titleRef.current, carouselRef.current, reviewRef.current];
     parts.forEach((part, index) => {
@@ -64,12 +74,12 @@ const Testimonials = () => {
 
   return (
     <section id='testimonials' className='testimonials' ref={sectionRef}>
-      <div className='section-padding mx-auto text-center'>
+      <div className='mt-5 mx-auto text-center'>
         <h2 className='text-5xl md:text-7xl' ref={titleRef}>Testimonials</h2>
         <p className='text-2xl md:text-4xl mb-8' ref={titleRef}>Hear the words of our
           <span className='italic text-primary'> customers.</span>
         </p>
-        {/* Desktop View */}
+        {/* Desktop View 
         <div ref={carouselRef} className='desktop relative overflow-hidden'>
           <AutoplaySlider ref={sliderRef} className='relative h-[80vh] z-0' play={isPlaying} cancelOnInteraction={false} interval={3000}
             animation="foldOutAnimation" onTransitionStart={handleTransitionStart} bullets={false}
@@ -106,11 +116,41 @@ const Testimonials = () => {
               </button>
             </div>
           </div>
+        </div>*/}
+
+        <div className='testi-container'>
+          <div className='testi-slide'>
+            {visibleReviews.map((r, idx) => (
+              <div key={`${r.name}-${idx}`} className='testi-item' style={{
+                backgroundImage: `url(${r.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: '50% 50%',
+                backgroundRepeat: 'no-repeat',
+              }}>
+                <div className='testi-content'>
+                  <div className='testi-quote'>"{r.quote}"</div>
+                  <div className='testi-name'>{r.name}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="testi-arrows">
+            <button className="p-2 rounded-full bg-primary hover:bg-navbar
+            hover:text-primary transition-colors text-white" onClick={previous}>
+              <IconArrowLeft />
+            </button>
+            <button onClick={next}
+              className="p-2 rounded-full bg-primary hover:bg-navbar
+            hover:text-primary transition-colors text-white">
+              <IconArrowRight />
+            </button>
+          </div>
+          <div className="time-running"></div>
         </div>
         {/* Mobile View */}
         <div className="max-w-4xl mx-auto" ref={carouselRef}>
           <div className="relative block lg:hidden">
-            <div className="animate-fade-in animation-delay-300">
+            <div className='scroll-smooth'>
               <TestimonialCard name={reviews[activeIndex].name}
               quote={reviews[activeIndex].quote}
               image={reviews[activeIndex].image} />
