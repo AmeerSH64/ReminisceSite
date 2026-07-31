@@ -118,7 +118,7 @@ const Testimonials = () => {
           </div>
         </div>*/}
 
-        <div className='testi-container'>
+        <div className='desktop testi-container'>
           <div className='testi-slide'>
             {visibleReviews.map((r, idx) => (
               <div key={`${r.name}-${idx}`} className='testi-item' style={{

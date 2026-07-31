@@ -38,7 +38,7 @@ const Navbar = () => {
                 <li><a href="#gallery">GALLERY</a></li>
                 <li>
                     <a href="#home">
-                        <img src="/logo-white.png" alt="White Logo" className="logo hidden md:block max-w-[150px]" />
+                        <img src="/logo-white.png" alt="White Logo" className="logo hidden md:block max-w-37.5" />
                     </a>
                 </li>
                 <li><a href="#testimonials">TESTIMONIALS</a></li>

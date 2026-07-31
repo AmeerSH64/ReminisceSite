@@ -43,6 +43,7 @@ const About = () => {
           <div className="flex items-center flex-col gap-10" ref={descriptionRef}>
             <div className="about-text">
               <p>At Reminisce, we specialise in wedding photography and cinematography.</p>
+              <img src="/logo-main.png" alt="Reminisce Logo" className="logo" />
               <p>With our team of skilled photographers, we capture those special moments for you.</p>
             </div>
             <div className="flex flex-center">

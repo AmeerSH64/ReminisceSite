@@ -26,7 +26,7 @@ const Contact = () => {
     }, []);
   return (
     <section id="contact" className='contact' ref={sectionRef}>
-        <div className="section-padding text-center">
+        <div className="text-center">
             <h2 className="md:text-7xl text-5xl" ref={titleRef}>Get in touch</h2>
             <p className="text-2xl md:text-4xl mb-8" ref={titleRef}>Have an idea? Let's
                 <span className="italic text-primary"> discuss.</span>
