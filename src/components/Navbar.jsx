@@ -21,16 +21,13 @@ const Navbar = () => {
     });
 
   return (
-    <header className="w-full top-0 z-10">
+    <header className="relative w-full top-0 z-10">
       <nav className="navbar">
             <div className="nav-header md:hidden">
                 <div className="nav-logo">
                     <a href="#">
-                        <img src="/Reminisce-logo.png" alt="Reminisce Logo" className="logo" />
+                        <img src="/R-Text.png" alt="Reminisce Logo" className="logo" />
                     </a>
-                </div>
-                <div className="nav-menu-btn" id="menu-btn">
-                    <IconMenu2 />
                 </div>
             </div>
             <ul className="nav-links" id="nav-links">
@@ -38,16 +35,16 @@ const Navbar = () => {
                 <li><a href="#gallery">GALLERY</a></li>
                 <li>
                     <a href="#home">
-                        <img src="/logo-white.png" alt="White Logo" className="logo hidden md:block max-w-37.5" />
+                        <img src="/logo-white.png" alt="White Logo" className="logo hidden md:block max-w-37.5 mt-5" />
                     </a>
                 </li>
                 <li><a href="#testimonials">TESTIMONIALS</a></li>
                 <li><a href="#contact">CONTACT US</a></li>
             </ul>
       </nav>
-      <div className="home-text mt-30 mx-auto max-w-4xl">
+      <div className="home-text max-md:absolute max-md:left-1/2 max-md:top-1/2 max-md:w-full max-md:-translate-x-1/2 max-md:-translate-y-1/2 max-md:px-4 md:mt-30 mx-auto max-w-4xl">
         <h1 className="text-5xl md:text-7xl text-white">Welcome to 
-            <span className="font-bold text-primary"> Reminisce</span>
+            <span className="font-bold text-primary text-shadow-navbar"> Reminisce</span>
         </h1>
         <p className="flex flex-wrap items-center justify-center gap-2 text-white text-2xl md:text-4xl">Your moments.
             <span className="slide">

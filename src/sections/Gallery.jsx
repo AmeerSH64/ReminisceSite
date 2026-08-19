@@ -37,7 +37,7 @@ const Gallery = () => {
         <p className='text-2xl md:text-4xl mb-8' ref={titleRef}>A showcase of our
           <span className='italic text-primary'> work.</span>
         </p>
-        <div className="gallery-collage grid grid-cols-3 md:grid-cols-6 gap-4 mt-5">
+        <div className="gallery-collage grid grid-cols-3 lg:grid-cols-6 gap-4 mt-5">
           <img src="/photos/wide-couple.webp" alt="Couple Wide Shot" className="col-span-3"
            ref={image1Ref} />
           <img src="/photos/nikkah-plaque.webp" alt="Nikkah Plaque" className="row-span-2"

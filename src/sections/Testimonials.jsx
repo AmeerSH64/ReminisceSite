@@ -1,14 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useGSAP } from "@gsap/react";
 import gsap from 'gsap';
 import { imageCarousel, reviews } from '../constants'
 import TestimonialCard from '../components/TestimonialCard';
 import { IconArrowLeft, IconArrowRight, IconPlayerPauseFilled, IconPlayerPlayFilled } from '@tabler/icons-react';
-import AwesomeSlider from 'react-awesome-slider';
-import withAutoplay from 'react-awesome-slider/dist/autoplay';
-import 'react-awesome-slider/dist/styles.css';
-
-const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -51,13 +46,13 @@ const Testimonials = () => {
     }
   };
 
-  setTimeout(() => {
-    if (activeIndex < reviews.length - 1) {
-      setActiveIndex(activeIndex + 1);
-    } else {
-      setActiveIndex(0);
-    }
-  }, 3000);
+  useEffect(() => {
+    if (!isPlaying) return;
+    const id = setInterval(() => {
+      setActiveIndex((prev) => (prev === reviews.length - 1 ? 0 : prev + 1));
+    }, 3000);
+    return () => clearInterval(id);
+  }, [isPlaying]);
 
   useGSAP(() => {
     const parts = [sectionRef.current, titleRef.current, carouselRef.current, reviewRef.current];
@@ -74,49 +69,12 @@ const Testimonials = () => {
 
   return (
     <section id='testimonials' className='testimonials' ref={sectionRef}>
-      <div className='mt-5 mx-auto text-center'>
+      <div className='mt-10 mx-auto text-center'>
         <h2 className='text-5xl md:text-7xl' ref={titleRef}>Testimonials</h2>
-        <p className='text-2xl md:text-4xl mb-8' ref={titleRef}>Hear the words of our
+        <p className='text-2xl md:text-4xl mb-4' ref={titleRef}>Hear the words of our
           <span className='italic text-primary'> customers.</span>
         </p>
-        {/* Desktop View 
-        <div ref={carouselRef} className='desktop relative overflow-hidden'>
-          <AutoplaySlider ref={sliderRef} className='relative h-[80vh] z-0' play={isPlaying} cancelOnInteraction={false} interval={3000}
-            animation="foldOutAnimation" onTransitionStart={handleTransitionStart} bullets={false}
-            organicArrows={false}>
-            {reviews.map((review, index) => (
-              <div key={index}
-                className='hidden lg:flex items-center justify-center z-0
-                flex-col'>
-                  <img src={review.image} className='w-full h-full object-cover' />
-              </div>
-
-            ))}
-          </AutoplaySlider>
-          <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 flex justify-center items-center flex-col z-20'>
-            <div className='relative grid grid-cols-2 h-[70vh] bottom-30 gap-x-150 gap-y-90 z-9'>
-              {reviews.map((r, idx) => (
-                <div className="w-80 md:w-130 text-white pt-20" key={idx}>
-                  <h5 className="text-3xl md:text-5xl">"{r.quote}"</h5>
-                  <p className="text-xl md:text-2xl">{r.name}</p>
-                </div>
-              ))}
-            </div>
-            <div className="bg-secondary w-55 rounded-4xl h-18 flex absolute bottom-5
-            items-center justify-center gap-4 mt-4 text-navbar">
-              <button onClick={handlePrev}>
-                <IconArrowLeft className="cursor-pointer w-15 h-15" />
-              </button>
-              <button onClick={() => setIsPlaying(!isPlaying)}>
-                {isPlaying ? <IconPlayerPauseFilled className="cursor-pointer w-15 h-15" /> :
-                 <IconPlayerPlayFilled className="cursor-pointer w-15 h-15" />}
-              </button>
-              <button onClick={handleNext}>
-                <IconArrowRight className="cursor-pointer w-15 h-15" />
-              </button>
-            </div>
-          </div>
-        </div>*/}
+        {/* Desktop View */}
 
         <div className='desktop testi-container'>
           <div className='testi-slide'>

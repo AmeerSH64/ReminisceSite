@@ -81,7 +81,7 @@ section {
 
     .bg-circle {
       @apply absolute -right-5 origin-center top-1/2 -translate-y-1/2 translate-x-5
-        w-[130%] h-[130%] group-hover:size-10 group-hover:right-10
+        w-[135%] h-[135%] group-hover:size-10 group-hover:right-10
         rounded-full bg-secondary transition-all duration-500;
     }
 
@@ -93,14 +93,14 @@ section {
     .arrow-wrapper {
       @apply group-hover:bg-secondary size-10 rounded-full absolute right-10 top-1/2 
         translate-y-6 group-hover:-translate-y-5
-        lg:-translate-y-1/2 translate-x-5 flex justify-center items-center overflow-hidden;
+        lg:-translate-y-1/2 translate-x-5 flex justify-center items-center overflow-hidden z-10;
     }
   }
 
   header {
     @apply min-h-150 md:min-h-[650px] bg-center bg-cover bg-no-repeat;
 
-    background-image: radial-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.9)),
+    background-image: radial-gradient(rgba(255, 255, 255, 0.16), rgba(0, 0, 0, 0.9)),
         url("/photos/couple-back.webp");
 
     .navbar {
@@ -109,11 +109,11 @@ section {
     }
 
     .logo {
-      @apply max-w-[70px] mt-5;
+      @apply w-full;
     }
 
     .nav-header {
-      @apply p-4 flex items-center justify-between gap-4 bg-navbar;
+      @apply p-4 flex items-center bg-navbar;
     }
 
     .nav-menu-btn {
@@ -122,15 +122,19 @@ section {
 
     .nav-links {
       @apply list-none absolute w-full p-8 items-center flex-col gap-8 bg-black-200 hidden md:flex
-      md:p-0 md:static md:transform-none md:flex-row md:justify-between md:bg-transparent;
+      md:p-0 md:static md:transform-none md:flex-row md:justify-between md:bg-transparent transition duration-500;
+
+      li:hover {
+        @apply translate-y-1;
+
+        &:nth-child(3) {
+          @apply translate-y-0;
+        }
+      }
     }
 
     a {
-      @apply pb-[5px] text-white border-b-2 border-solid border-transparent;
-
-      &:hover {
-        @apply border-white;
-      }
+      @apply pb-[5px] text-white border-b-2 border-solid border-transparent ;
     }
 
     .home-text {
@@ -141,7 +145,7 @@ section {
       }
 
       .slide {
-        @apply relative inline-flex items-center overflow-hidden px-2 md:px-4 h-11 md:h-10 leading-none;
+        @apply relative inline-flex items-center overflow-hidden px-1 md:px-4 h-11 md:h-10 leading-none max-w-full whitespace-nowrap;
       }
     }
   }
@@ -152,23 +156,29 @@ section {
 
   .about {
     .about-text {
-      @apply w-full max-w-3xl flex flex-col justify-center items-center text-2xl md:text-3xl lg:text-5xl text-center gap-8;
-    }
+      @apply w-full max-w-3xl flex flex-col justify-center items-center p-4 text-2xl md:text-3xl text-start gap-8;
 
+      p:first-of-type:first-letter {
+        @apply text-5xl lg:text-7xl text-primary;
+      }
+    }
+    
     img {
-      @apply w-[50%] lg:w-full max-w-100 lg:max-w-125;
+      @apply min-w-40 lg:w-75;
     }
 
-    .logo {
-      @apply min-w-5;
+    .section-bg-logo {
+      @apply absolute bottom-12.5 right-25 md:right-50 opacity-[0.2] z-0 pointer-events-none w-100 lg:w-400;
     }
   }
 
   .gallery {
     img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
+      @apply w-full h-full object-cover transition-all;
+
+      &:hover {
+        transform: scale(1.15);
+      }
     }
   }
 
@@ -191,6 +201,8 @@ section {
         @apply top-0 left-0 translate-0 w-full h-full;
 
         border-radius: 0;
+
+        animation: fade-in 1s ease-in-out forwards;
       }
 
       &:nth-child(3) {
@@ -238,6 +250,16 @@ section {
   .contact {
     @apply flex flex-row justify-center items-center p-6;
 
+    .contact-video {
+      @apply lg:w-65.5 overflow-hidden;
+      
+      max-height: 80dvh;
+
+      video {
+        @apply block w-full h-full object-cover;
+      }
+    }
+
     form {
       @apply w-full;
     }
@@ -259,7 +281,7 @@ section {
     @apply p-4;
 
     .logo {
-      @apply w-10 h-10 pt-1 cursor-pointer transition-all duration-300 ease-in-out;
+      @apply min-w-10 min-h-10 w-10 h-10 pt-1 cursor-pointer transition-all duration-300 ease-in-out;
     }
   }
 }
@@ -273,6 +295,8 @@ section {
 .wrapper {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  white-space: nowrap;
   animation: wordSlider 21s infinite cubic-bezier(0.9, 0.01, 0.3, 0.99);
 }
 

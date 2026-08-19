@@ -18,7 +18,7 @@ const Footer = () => {
         <div className='flex flex-col md:flex-row items-center justify-between gap-8'>
           <div className='flex gap-4 text-center md:text-left'>
             <a href="#home">
-              <img className='logo' src="/Reminisce-logo.svg" alt="Reminisce Logo" />
+              <img className='logo' src="/logo-main.png" alt="Reminisce Logo" />
             </a>
             <p className='text-sm text-secondary mt-3'>
               &copy; {currentYear} Reminisce UK Ltd. All rights reserved.

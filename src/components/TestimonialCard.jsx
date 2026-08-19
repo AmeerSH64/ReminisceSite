@@ -11,7 +11,7 @@ const TestimonialCard = ({ name, quote, image }) => {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      <h3 className='font-bold text-5xl text-shadow'>"{quote}"</h3>
+      <h3 className='font-bold text-4xl text-shadow'>"{quote}"</h3>
       <p className='text-2xl'>{name}</p>
     </div>
   )

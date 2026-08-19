@@ -86,7 +86,7 @@ const Contact = () => {
                         </div>
                     </div>
                 </div>
-                <div className="contact-video lg:w-[66%]" ref={videoRef}>
+                <div className="contact-video bg-navbar" ref={videoRef}>
                     <video src="/videos/mehndi-vertical.mov" autoPlay loop
                     muted playsInline />
                 </div>
