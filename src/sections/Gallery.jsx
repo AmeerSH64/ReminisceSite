@@ -40,15 +40,15 @@ const Gallery = () => {
         <div className="gallery-collage grid grid-cols-3 lg:grid-cols-6 gap-4 mt-5">
           <img src="/photos/wide-couple.webp" alt="Couple Wide Shot" className="col-span-3"
            ref={image1Ref} />
-          <img src="/photos/nikkah-plaque.webp" alt="Nikkah Plaque" className="row-span-2"
+          <img src="/photos/arms.jpg" alt="Arms" className="row-span-2"
            ref={image2Ref} />
           <img className="col-span-2" src="/photos/groom-bride-walking-away.webp" alt="Walking Away"
           ref={image3Ref} />
-          <img className="col-span-2" src="/photos/flower-curtains.webp" alt="Curtains"
+          <img className="col-span-2" src="/photos/aura.jpg" alt="Groom"
           ref={image4Ref} />
-          <img src="/photos/bride-outfit.webp" alt="Bride Outfit"
+          <img src="/photos/looking-out.jpg" alt=""
           ref={image5Ref} />
-          <img className="col-span-2" src="/photos/wedding-car.webp" alt="Wedding Car"
+          <img className="col-span-2" src="/photos/wide-deco.jpg" alt="Wide Deco"
           ref={image6Ref} />
         </div>
       </div>

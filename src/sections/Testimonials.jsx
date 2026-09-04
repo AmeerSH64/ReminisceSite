@@ -50,7 +50,7 @@ const Testimonials = () => {
     if (!isPlaying) return;
     const id = setInterval(() => {
       setActiveIndex((prev) => (prev === reviews.length - 1 ? 0 : prev + 1));
-    }, 3000);
+    }, 4000);
     return () => clearInterval(id);
   }, [isPlaying]);
 

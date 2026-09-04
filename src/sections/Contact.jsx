@@ -1,24 +1,55 @@
 import { IconSend } from '@tabler/icons-react'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { contactInfo } from '../constants';
 import { useGSAP } from "@gsap/react";
 import gsap from 'gsap';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const formRef = useRef(null);
+  const formBoxRef = useRef(null);
   const infoRef = useRef(null);
   const videoRef = useRef(null);
 
+  const [formData, setFormData] = useState({
+    name: '', email: '', message: ''
+  });
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((currentData) => ({ ...currentData, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+        await emailjs.send(
+            import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+            import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+            formData,
+            import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        );
+        console.log('Email sent successfully!');
+        setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+        console.error('EMAILJS ERROR:', error);
+    } finally {
+        setLoading(false);
+    }
+  }
+
     useGSAP(() => {
-        const parts = [sectionRef.current, titleRef.current, formRef.current, 
+        const parts = [sectionRef.current, titleRef.current, formBoxRef.current, 
             infoRef.current, videoRef.current];
         parts.forEach((part, index) => {
           gsap.fromTo(part, 
             { y: 50, opacity: 0 },
             { y: 0, opacity: 1, duration: 1, delay: 0.3 * (index + 1),
-              scrollTrigger: { trigger: part, start: "top 50%" }
+              scrollTrigger: { trigger: part, start: "top 30%" }
             }
           )
         })
@@ -32,35 +63,36 @@ const Contact = () => {
                 <span className="italic text-primary"> discuss.</span>
             </p>
             <div className="grid lg:grid-cols-3 gap-6 md:gap-12 max-w-7xl mx-auto align-middle">
-                <div className="bg-navbar p-8" ref={formRef}>
-                    <form className="space-y-6">
+                <div className="bg-navbar-2 p-8" ref={formBoxRef}>
+                    <form className="space-y-6" ref={formRef} onSubmit={handleSubmit}>
                         <div>
-                            <input type="text" placeholder="Name" className="input-field" />
+                            <input type="text" name="name" placeholder="Name" className="input-field" required
+                                value={formData.name} onChange={handleChange} />
                         </div>
                         <div>
-                            <input type="email" placeholder="Email" className="input-field" />
+                            <input type="email" name="email" placeholder="Email" className="input-field" required
+                                value={formData.email} onChange={handleChange} />
                         </div>
                         <div>
-                            <textarea placeholder="Message" className="input-field h-32"></textarea>
+                            <textarea name="message" placeholder="Message" className="input-field h-32" required
+                                value={formData.message} onChange={handleChange}></textarea>
                         </div>
-                        <a href="mailto:info@reminisceuk.com">
-                            <button type="submit">
-                                <div className='cta-button group'>
-                                    <div className='bg-circle' />
-                                    <p className='text'>Send Message</p> 
-                                    <div className='arrow-wrapper'>
-                                        <IconSend className="size-5 xl:-translate-y-32 
-                                        translate-y-0 animate-bounce group-hover:translate-y-0 
-                                        transition-all duration-500 text-white" />
-                                    </div>
+                        <button type="submit" disabled={loading}>
+                            <div className='cta-button group'>
+                                <div className='bg-circle' />
+                                <p className='text'>{loading ? 'Sending...' :'Send Message'}</p> 
+                                <div className='arrow-wrapper'>
+                                    <IconSend className="size-5 xl:-translate-y-32 
+                                    translate-y-0 animate-bounce group-hover:translate-y-0 
+                                    transition-all duration-500 text-white" />
                                 </div>
-                            </button>
-                        </a>
+                            </div>
+                        </button>
                     </form>
                 </div>
 
                 <div className='space-y-6' ref={infoRef}>
-                    <div className='bg-navbar p-8'>
+                    <div className='bg-navbar-2 p-8'>
                         <h3 className='text-primary text-xl bold'>Contact Information</h3>
                         <div>
                         {contactInfo.map((item, i) => (
@@ -79,14 +111,14 @@ const Contact = () => {
                         ))}
                         </div>
                     </div>
-                    <div className='bg-navbar flex flex-col'>
+                    <div className='bg-navbar-2 flex flex-col'>
                         <div className='flex items-center gap-5 p-10'>
                             <span className='w-3 h-3 rounded-full bg-green-400 animate-pulse' />
                             <span className='font-semibold text-2xl'>Currently Available</span>
                         </div>
                     </div>
                 </div>
-                <div className="contact-video bg-navbar" ref={videoRef}>
+                <div className="contact-video bg-navbar-2" ref={videoRef}>
                     <video src="/videos/mehndi-vertical.mov" autoPlay loop
                     muted playsInline />
                 </div>

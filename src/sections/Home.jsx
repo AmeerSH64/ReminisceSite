@@ -14,7 +14,7 @@ const Home = () => {
     <section id="home" className="home">
       <div className="text-center">
         <div className="home-video flex items-center justify-center">
-          <video src="/videos/rem-site-intro.mp4" autoPlay muted loop playsInline></video>
+          <video src="/videos/site-intro-3.mp4" autoPlay muted loop playsInline></video>
         </div>
       </div>
     </section>

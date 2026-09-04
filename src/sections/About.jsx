@@ -1,4 +1,4 @@
-import { IconArrowDown } from "@tabler/icons-react";
+import { IconArrowDown, IconBrandInstagram } from "@tabler/icons-react";
 import React, { useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -35,7 +35,7 @@ const About = () => {
         <p className="text-2xl md:text-4xl mb-8" ref={titleRef}>What we do for 
           <span className="italic text-primary"> you.</span>
         </p>
-        <div className="flex justify-center items-center flex-col md:flex-row">
+        <div className="flex justify-center items-center flex-col lg:flex-row">
           <div className="flex gap-5 flex-col md:flex-row">
             <div className="about-top-images flex flex-row md:flex-col md:gap-5" ref={image1Ref}>
               <img src="/photos/deco-outside.webp" alt="Outside Decoration" 
@@ -66,12 +66,12 @@ const About = () => {
               </p>
             </div>
             <div className="flex flex-center">
-              <a href="#gallery">
+              <a href="https://www.instagram.com/reminisceeuk/" target="_blank" rel="noopener noreferrer">
                 <div className="cta-button group">
                   <div className="bg-circle" />
                   <p className="text">See our work</p>
                   <div className="arrow-wrapper">
-                    <IconArrowDown className="size-5 translate-y-0 xl:-translate-y-32 
+                    <IconBrandInstagram className="size-5 translate-y-0 xl:-translate-y-32 
                     animate-bounce group-hover:translate-y-0 transition-all duration-500 text-white" />
                   </div>
                 </div>

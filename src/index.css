@@ -6,8 +6,8 @@ body {
   width: 100dvw;
   overflow-x: hidden;
   font-family: "Cinzel", serif;
-  background-color: white;
-  color: black;
+  background-color: var(--color-navbar);
+  color: var(--color-secondary);
   scroll-behavior: smooth;
 }
 
@@ -17,8 +17,10 @@ section {
 
 @theme {
   --color-primary: #6B4F3A;
+  --color-primary-light: #8B6A5C;
   --color-secondary: #413336;
   --color-navbar: #E4DED2;
+  --color-navbar-2: #E1D6C1;
   --color-white-50: #d9ecff;
   --color-black-50: #1c1c21;
   --color-black-100: #0e0e10;
@@ -101,7 +103,7 @@ section {
     @apply min-h-150 md:min-h-[650px] bg-center bg-cover bg-no-repeat;
 
     background-image: radial-gradient(rgba(255, 255, 255, 0.16), rgba(0, 0, 0, 0.9)),
-        url("/photos/couple-back.webp");
+        url("/photos/holding.jpg");
 
     .navbar {
       @apply fixed isolate top-0 w-full max-h-300 z-9 m-auto 
@@ -156,7 +158,7 @@ section {
 
   .about {
     .about-text {
-      @apply w-full max-w-3xl flex flex-col justify-center items-center p-4 text-2xl md:text-3xl text-start gap-8;
+      @apply w-full lg:max-w-3xl mt-15 md:mt-0 flex flex-col justify-center items-center p-4 text-2xl md:text-3xl text-start gap-8;
 
       p:first-of-type:first-letter {
         @apply text-5xl lg:text-7xl text-primary;
@@ -215,7 +217,7 @@ section {
     }
 
     .testi-content {
-      @apply absolute top-[50%] left-25 w-100 text-left text-white translate-x-0 translate-[-50%] hidden;
+      @apply absolute top-[50%] left-25 w-150 text-left text-white translate-x-0 translate-[-50%] hidden;
     }
 
     .testi-item:nth-child(2) .testi-content {
@@ -223,7 +225,7 @@ section {
     }
     
     .testi-quote {
-      @apply text-5xl;
+      @apply text-5xl text-shadow-lg text-shadow-gray-800;
 
       animation: fade-in 1s ease-in-out 1 forwards;
     }

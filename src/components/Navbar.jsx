@@ -44,14 +44,14 @@ const Navbar = () => {
       </nav>
       <div className="home-text max-md:absolute max-md:left-1/2 max-md:top-1/2 max-md:w-full max-md:-translate-x-1/2 max-md:-translate-y-1/2 max-md:px-4 md:mt-30 mx-auto max-w-4xl">
         <h1 className="text-5xl md:text-7xl text-white">Welcome to 
-            <span className="font-bold text-primary text-shadow-navbar"> Reminisce</span>
+            <span className="font-bold text-shadow-lg text-shadow-gray-800;"> Reminisce</span>
         </h1>
         <p className="flex flex-wrap items-center justify-center gap-2 text-white text-2xl md:text-4xl">Your moments.
             <span className="slide">
               <span className="wrapper">
                 {words.map((word) => (
                   <span key={word.text} className="flex items-center md:gap-3 gap-1 pb-2">
-                    <span className="italic text-primary">{word.text}</span>
+                    <span className="italic">{word.text}</span>
                   </span>
                 ))}
               </span>

@@ -23,8 +23,8 @@ const contactInfo = [
     {
         icon: IconMapPin,
         label: "Location",
-        value: "Milton Keynes, UK",
-        href: "https://maps.google.com/?q=Milton-Keynes-UK"
+        value: "London, UK",
+        href: "https://maps.google.com/?q=London-UK"
     }
 ]
 
@@ -36,24 +36,24 @@ const imageCarousel = [
 
 const reviews = [
     {
-        name: "Tifa Lockheart",
-        quote: "Beautifully photographed.",
+        name: "Hamza",
+        quote: "Just wanted to say a massive thank you to all the camera team... you made everything easy for us and I can tell the photos will be amazing",
         image: "/photos/chandelier.webp"
     },
     {
-        name: "Cloud Strife",
-        quote: "Very organised and professional.",
+        name: "Aneesa",
+        quote: "Thank you for being there on our special days. We appreciate your hard work and can't wait to see all the shots and videos.",
         image: "/photos/wall-art.webp"
     },
     {
-        name: "Barret Wallace",
-        quote: "Captured our wedding perfectly.",
+        name: "Albi",
+        quote: "We genuinely feel so blessed to have had you guys as part of our wedding.",
         image: "/photos/couple-back.webp"
     },
     {
-        name: "Aerith Gainsborough",
-        quote: "They have an eye for the best shots.",
-        image: "/photos/shelf.webp"
+        name: "Abie & Mustakim",
+        quote: "You all did an amazing job and myself and Abie are very happy with how today went.",
+        image: "/photos/chairs.jpg"
     }
 ]
 
