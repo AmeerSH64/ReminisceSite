@@ -16,4 +16,8 @@ The React Compiler is not enabled on this template because of its impact on dev 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 # ReminisceSite
 
-This website has been built for the photograpghy company Reminisce UK.
+This website has been built for the photograpghy company Reminisce UK. It is a showcase site that highlights their videoography services, so that potential customers can see what they provide. GSAP animations are used to make the site dynamic.
+
+## How to Use
+
+First run `npm install`, and then run `npm run dev`.
